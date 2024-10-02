@@ -1,0 +1,12 @@
+[ERROR] 2024-10-02 12:54:54.776 com.qa.base.AppFactory:49 - This is error message
+[FATAL] 2024-10-02 12:54:54.799 com.qa.base.AppFactory:50 - This is fatal message
+[DEBUG] 2024-10-02 12:56:24.700 com.qa.base.AppFactory:46 - This is debug message
+[INFO ] 2024-10-02 12:56:24.707 com.qa.base.AppFactory:47 - This is info message
+[WARN ] 2024-10-02 12:56:24.707 com.qa.base.AppFactory:48 - This is warn message
+[ERROR] 2024-10-02 12:56:24.707 com.qa.base.AppFactory:49 - This is error message
+[FATAL] 2024-10-02 12:56:24.709 com.qa.base.AppFactory:50 - This is fatal message
+[DEBUG] 2024-10-02 12:57:35.794 com.qa.base.AppFactory:46 - This is debug message
+[INFO ] 2024-10-02 12:57:35.799 com.qa.base.AppFactory:47 - This is info message
+[WARN ] 2024-10-02 12:57:35.800 com.qa.base.AppFactory:48 - This is warn message
+[ERROR] 2024-10-02 12:57:35.800 com.qa.base.AppFactory:49 - This is error message
+[FATAL] 2024-10-02 12:57:35.802 com.qa.base.AppFactory:50 - This is fatal message
