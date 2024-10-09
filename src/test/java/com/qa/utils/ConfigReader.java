@@ -69,4 +69,6 @@ public class ConfigReader {
         else throw new RuntimeException("appiumServerEndpointURL not specified in property file");
     }
 
+
+
 }

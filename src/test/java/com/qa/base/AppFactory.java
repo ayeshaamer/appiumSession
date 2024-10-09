@@ -32,27 +32,29 @@ public class AppFactory {
 
     InputStream stringsIs;
 
-    Utilities utilities;
+    public Utilities utilities = new Utilities();
 
     static Logger log = LogManager.getLogger(AppFactory.class.getName());
+
+    public static String dateTime;
 
     @BeforeTest
     @Parameters({"platformName", "platformVersion", "deviceName"})
     public void initializer(String platformName, String platformVersion, String deviceName) throws IOException, ParserConfigurationException, SAXException {
         try {
             configReader = new ConfigReader();
-            utilities = new Utilities();
 
-            log.debug("This is debug message");
-            log.info("This is info message");
-            log.warn("This is warn message");
-            log.error("This is error message");
-            log.fatal("This is fatal message");
+//            log.debug("This is debug message");
+//            log.info("This is info message");
+//            log.warn("This is warn message");
+//            log.error("This is error message");
+//            log.fatal("This is fatal message");
 
             String xmlFileName = "strings/strings.xml";
             stringsIs = getClass().getClassLoader().getResourceAsStream(xmlFileName);
             stringHashMap = utilities.parseStringXML(stringsIs);
 
+            dateTime = utilities.getDateTime();
 
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("appium:platformName", platformName);
@@ -65,7 +67,10 @@ public class AppFactory {
             capabilities.setCapability("appium:noReset", configReader.getNoReset());
 
             driver = new AndroidDriver(new URL(configReader.getAppiumServerEndpointURL()), capabilities);
+            utilities.log().info("AppURL is {}", configReader.getAppiumServerEndpointURL());
+
             AppDriver.setDriver(driver);
+            utilities.log().info("Android Driver is set");
         }
         catch(Exception exception){
             exception.printStackTrace();
@@ -78,19 +83,25 @@ public class AppFactory {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public void clickElement(WebElement element){
+    public void clickElement(WebElement element, String message){
         this.waitForVisibility(element);
+        utilities.log().info(message);
         element.click();
     }
 
-    public void sendKeys(WebElement element, String text){
+    public void sendKeys(WebElement element, String text, String message){
         this.waitForVisibility(element);
+        utilities.log().info(message);
         element.sendKeys(text);
     }
 
     public String getAttribute(WebElement element, String attribute){
         this.waitForVisibility(element);
         return element.getAttribute(attribute);
+    }
+
+    public static String getDateTime(){
+        return dateTime;
     }
 
     @AfterTest
