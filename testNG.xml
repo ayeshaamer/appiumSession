@@ -12,4 +12,6 @@
             <class name="com.qa.testCases.LoginTest"></class>
         </classes>
     </test>
+
+
 </suite>
