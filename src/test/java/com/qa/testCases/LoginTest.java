@@ -1,8 +1,10 @@
 package com.qa.testCases;
 
+import com.aventstack.extentreports.Status;
 import com.qa.base.AppFactory;
 import com.qa.pages.LoginPage;
 import com.qa.pages.ProductPage;
+import com.qa.reports.ExtentReport;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.testng.Assert;
@@ -58,7 +60,6 @@ public class LoginTest extends AppFactory {
 
         String expectedErrorMessage = stringHashMap.get("error_invalid_username_and_password");
         String actualErrorMessage = loginPage.getErrorMessage();
-
         utilities.log().info("Actual Error Message is " + actualErrorMessage + "\nExpected Error Message is " + expectedErrorMessage);
         Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
     }
@@ -70,7 +71,7 @@ public class LoginTest extends AppFactory {
         loginPage.enterPassword(loginUser.getJSONObject("invalidPassword").getString("password"));
         loginPage.clickLoginBtn();
 
-        String expectedErrorMessage = stringHashMap.get("error_invalid_username_and_password") + "Sample error";
+        String expectedErrorMessage = stringHashMap.get("error_invalid_username_and_password");
         String actualErrorMessage = loginPage.getErrorMessage();
 
         utilities.log().info("Actual Error Message is " + actualErrorMessage + "\nExpected Error Message is " + expectedErrorMessage);
